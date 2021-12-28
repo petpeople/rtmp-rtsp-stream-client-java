@@ -137,7 +137,13 @@ public class Camera1ApiManager implements Camera.PreviewCallback, Camera.FaceDet
     }
     yuvBuffer = new byte[width * height * 3 / 2];
     try {
-      camera = Camera.open(cameraSelect);
+      // petpeople code start
+      if( Camera.getNumberOfCameras() > 2 && cameraSelect == 0 ){
+        camera = Camera.open(2);
+      } else {
+        camera = Camera.open(cameraSelect);
+      }
+      // petpeople code end
       Camera.CameraInfo info = new Camera.CameraInfo();
       Camera.getCameraInfo(cameraSelect, info);
       isFrontCamera = info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT;
