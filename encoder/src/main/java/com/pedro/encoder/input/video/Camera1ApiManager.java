@@ -139,7 +139,7 @@ public class Camera1ApiManager implements Camera.PreviewCallback, Camera.FaceDet
     try {
       // petpeople code start
       if( Camera.getNumberOfCameras() > 2 && cameraSelect == 0 ){
-        camera = Camera.open(2);
+        camera = Camera.open(Camera.getNumberOfCameras() - 1);
       } else {
         camera = Camera.open(cameraSelect);
       }
