@@ -138,9 +138,16 @@ public class Camera1ApiManager implements Camera.PreviewCallback, Camera.FaceDet
     yuvBuffer = new byte[width * height * 3 / 2];
     try {
       // petpeople code start
-      if( Camera.getNumberOfCameras() > 2 && cameraSelect == 0 ){
-        Log.d("WAYO-TEST", String.valueOf(Camera.getNumberOfCameras()));
-        camera = Camera.open(2);
+      int numberOfCameras = Camera.getNumberOfCameras();
+      Log.d("WAYO-TEST", String.valueOf(numberOfCameras));
+      if( numberOfCameras > 2 && cameraSelect == 0 ){
+        Camera.CameraInfo info = new Camera.CameraInfo();
+        Camera.getCameraInfo(2, info);
+        if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+          camera = Camera.open(0);
+        } else {
+          camera = Camera.open(2);
+        }
       } else {
         camera = Camera.open(cameraSelect);
       }
