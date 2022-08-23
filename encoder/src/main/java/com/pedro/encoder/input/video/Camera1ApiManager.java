@@ -139,7 +139,6 @@ public class Camera1ApiManager implements Camera.PreviewCallback, Camera.FaceDet
     try {
       // petpeople code start
       int numberOfCameras = Camera.getNumberOfCameras();
-      Log.d("WAYO-TEST", String.valueOf(numberOfCameras));
       if( numberOfCameras > 2 && cameraSelect == 0 ){
         Camera.CameraInfo info = new Camera.CameraInfo();
         Camera.getCameraInfo(2, info);
