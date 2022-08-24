@@ -78,7 +78,6 @@ public abstract class Camera1Base
   public Camera1Base(SurfaceView surfaceView) {
     context = surfaceView.getContext();
     cameraManager = new Camera1ApiManager(surfaceView, this);
-    Log.d("WAYO-TEST", String.valueOf(cameraManager.camera));
     init();
   }
 
@@ -324,6 +323,20 @@ public abstract class Camera1Base
   public void setForce(CodecUtil.Force forceVideo, CodecUtil.Force forceAudio) {
     videoEncoder.setForce(forceVideo);
     audioEncoder.setForce(forceAudio);
+  }
+
+  public void flashOn() {
+    Log.d("WAYO-TEST", "flashOn - cameraManager.camera" + String.valueOf(cameraManager.camera));
+    Camera.Parameters params = cameraManager.camera.getParameters();
+    params.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+    cameraManager.camera.setParameters(params);
+  }
+
+  public void flashOff() {
+    Log.d("WAYO-TEST", "flashOff - cameraManager.camera" + String.valueOf(cameraManager.camera));
+    Camera.Parameters params = cameraManager.camera.getParameters();
+    params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+    cameraManager.camera.setParameters(params);
   }
 
   /**
