@@ -78,6 +78,7 @@ public abstract class Camera1Base
   public Camera1Base(SurfaceView surfaceView) {
     context = surfaceView.getContext();
     cameraManager = new Camera1ApiManager(surfaceView, this);
+    Log.d("WAYO-TEST", String.valueOf(cameraManager.camera));
     init();
   }
 

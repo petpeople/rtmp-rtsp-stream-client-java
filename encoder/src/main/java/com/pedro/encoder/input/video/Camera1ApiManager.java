@@ -35,7 +35,7 @@ import java.util.List;
 public class Camera1ApiManager implements Camera.PreviewCallback, Camera.FaceDetectionListener {
 
   private String TAG = "Camera1ApiManager";
-  private Camera camera = null;
+  public Camera camera = null;
   private SurfaceView surfaceView;
   private TextureView textureView;
   private SurfaceTexture surfaceTexture;
